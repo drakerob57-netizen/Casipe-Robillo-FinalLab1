@@ -1,5 +1,6 @@
 <?php
     session_start();
+    date_default_timezone_set('Asia/Manila');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,6 +11,7 @@
 </head>
 <body>
     <?php
+       
         echo "Welcome, " .$_SESSION['user']. "<br>";
         echo "Today is: ".date("F d, Y - h:i A");
         echo "Your last visit was: ".$_COOKIE['last_visit'];
