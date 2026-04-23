@@ -7,19 +7,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Dashboard</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 <body>
-    <?php
-       
-        echo "Welcome, " .$_SESSION['user']. "<br>";
-        echo "Today is: ".date("F d, Y - h:i A");
-        echo "Your last visit was: ".$_COOKIE['last_visit'];
-    ?>
+    <div class="container vh-100">
+        <div class="row align-items-center text-center h-100">
+            <div class="col">
+                <?php
+                    echo "<h4>Welcome, " .$_SESSION['user']. "<h4><br><br>";
+                    echo "<h4>Today is: ".date("F d, Y - h:i A")."<h4><br><br>";
+                    echo "<h4>Your last visit was: ".$_COOKIE['last_visit']."<h4><br><br>";
 
-    <form action="logout.php" method="POST">
-        <button type="submit" name="submit">Log Out</button>
-    </form>
-    
-</body>
+                    setcookie('last_visit', date("F d, Y - h:i A"), time() + 86400);
+                ?>
+
+                <form action="logout.php" method="POST">
+                    <button type="submit" name="submit">Log Out</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    </body>
 </html>

@@ -7,7 +7,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 </head>
 
 <?php
@@ -19,7 +20,9 @@
 
     if(($_SERVER['REQUEST_METHOD'] === 'POST')){
         $_SESSION['user'] = $_POST['name'];
-        setcookie('last_visit', date("F d, Y - h:i A"), time() + 86400);
+        if(!isset($_COOKIE['last_visit'])){
+            setcookie('last_visit', date("F d, Y - h:i A"), time() + 86400);
+        }
         header('Location: dashboard.php');
         exit;
     }
@@ -27,11 +30,15 @@
 ?>
 
 <body>
-
-    <form action="index.php" method="post">
-        Name: <input type="text" name="name"><br>
-        <input type="submit">
-    </form>
-
+    <div class="container vh-100">
+        <div class="row align-items-center text-center h-100">
+            <div class="col">
+                <form action="index.php" method="post">
+                    Name: <input type="text" name="name"><br><br>
+                    <input type="submit">
+                </form>
+            </div>
+        </div>
+    </div>
 </body>
 </html>
