@@ -1,6 +1,8 @@
 <?php
-    session_start();
-    date_default_timezone_set('Asia/Manila');
+    // Start the session to access user data
+    session_start(); 
+    // Set the timezone to Manila
+    date_default_timezone_set('Asia/Manila'); 
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,15 +17,19 @@
         <div class="row align-items-center text-center h-100">
             <div class="col">
                 <?php
-                    echo "<h4>Welcome, " .$_SESSION['user']. "<h4><br><br>";
-                    echo "<h4>Today is: ".date("F d, Y - h:i A")."<h4><br><br>";
-                    echo "<h4>Your last visit was: ".$_COOKIE['last_visit']."<h4><br><br>";
+                    // Display welcome message with user's name
+                    echo "<h4>Welcome, " .$_SESSION['user']. "<h4><br><br>"; 
+                    // Show current date and time
+                    echo "<h4>Today is: ".date("F d, Y - h:i A")."<h4><br><br>"; 
+                    // Show user's last visit from cookie
+                    echo "<h4>Your last visit was: ".$_COOKIE['last_visit']."<h4><br><br>"; 
 
                     setcookie('last_visit', date("F d, Y - h:i A"), time() + 86400);
                 ?>
 
                 <form action="logout.php" method="POST">
-                    <button type="submit" name="submit">Log Out</button>
+                    <!-- Logout form -->
+                    <button type="submit" name="submit">Log Out</button> 
                 </form>
             </div>
         </div>
